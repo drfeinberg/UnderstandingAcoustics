@@ -13,15 +13,9 @@ def process_upload():
     st.write(file_details)
     bytes_data = uploaded_file.getvalue()
 
-    #b = byte_stream.read()  # read all data
-    nch = 2  # assuming stereo
-    dtype = np.int16  # 16-bit samples
-    x = np.frombuffer(bytes_data, dtype=dtype).reshape(-1, nch)
-    sound = parselmouth.Sound(x)
-
-    #x, fs = sf.read(io.BytesIO(bytes_data))
-   # sf.write('tmp.wav', x, fs)
-    #sound = parselmouth.Sound('tmp.wav')
+    x, fs = sf.read(io.BytesIO(bytes_data))
+    sf.write('tmp.wav', x, fs)
+    sound = parselmouth.Sound('tmp.wav')
     sound.name = file_details['FileName']
     return sound, file_details
 
