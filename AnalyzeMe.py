@@ -21,6 +21,7 @@ def process_upload():
 
 @st.cache(suppress_st_warning=True, allow_output_mutation=True)
 def waveform_plot(sound):
+    st.write("Cache miss: waveform_plot(", sound, ",) ran")
     waveform = pd.DataFrame({"Amplitude": sound.values[0].T})
     st.line_chart(waveform)
 
