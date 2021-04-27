@@ -19,7 +19,7 @@ def process_upload():
     sound.name = file_details['FileName']
     return sound, file_details
 
-@st.cache(suppress_st_warning=True)
+@st.cache(suppress_st_warning=True, allow_output_mutation=True)
 def waveform_plot(sound):
     waveform = pd.DataFrame({"Amplitude": sound.values[0].T})
     st.line_chart(waveform)
