@@ -1,3 +1,4 @@
 praat-parselmouth
 pandas
 plotly
+soundfile
